@@ -8,7 +8,7 @@ import json
 import plotly.express as px
 import plotly.graph_objects as go
 
-# Import database module
+
 from database import (
     initialize_database,
     get_or_create_user,
@@ -27,34 +27,20 @@ from database import (
     get_user_portfolio,
     get_user_insights
 )
-
-# Function to apply custom styling
 def apply_custom_style():
-    # Get the background image path
     image_path = "assets/background.png"
-    
-    # Read the background image file and encode it in base64
     with open(image_path, "rb") as f:
         background_image = base64.b64encode(f.read()).decode("utf-8")
-    
-    # Read the CSS content from file
     with open("assets/style.css", "r") as f:
         css_content = f.read()
-    
-    # Replace the placeholder with the actual encoded image
     css_content = css_content.replace("{background_image_base64}", background_image)
-    
-    # Apply the custom styling
     st.markdown(f"""
     <style>
     {css_content}
     </style>
     """, unsafe_allow_html=True)
 
-# Initialize the database
 initialize_database()
-
-# Import utility modules
 from geminiai_use import (
      
     analyze_budget, 
