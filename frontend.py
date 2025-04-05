@@ -72,7 +72,7 @@ def create_income_expense_bar_chart(income, total_expenses, remaining):
             y=[amount],
             name=category,
             marker_color=color,
-            text=f"${amount:,.2f}",
+            text=f"Rs{amount:,.2f}",
             textposition='auto'
         ))
     
@@ -80,7 +80,7 @@ def create_income_expense_bar_chart(income, total_expenses, remaining):
     fig.update_layout(
         title="Income vs Expenses",
         yaxis=dict(
-            title="Amount ($)",
+            title="Amount (Rs)",
             gridcolor='rgba(0,0,0,0.1)'
         ),
         plot_bgcolor='rgba(0,0,0,0)',
@@ -151,7 +151,7 @@ def create_investment_growth_chart(initial_investment, monthly_contribution, yea
         mode='lines+markers',
         name='Total Value',
         line=dict(color='#4CAF50', width=3),
-        hovertemplate='Year %{x}<br>Value: $%{y:,.2f}<extra></extra>'
+        hovertemplate='Year %{x}<br>Value: Rs.%{y:,.2f}<extra></extra>'
     ))
     
     fig.add_trace(go.Scatter(
@@ -160,7 +160,7 @@ def create_investment_growth_chart(initial_investment, monthly_contribution, yea
         mode='lines+markers',
         name='Total Contributions',
         line=dict(color='#2196F3', width=2, dash='dash'),
-        hovertemplate='Year %{x}<br>Contributions: $%{y:,.2f}<extra></extra>'
+        hovertemplate='Year %{x}<br>Contributions: Rs.%{y:,.2f}<extra></extra>'
     ))
     
     # Update layout
@@ -171,7 +171,7 @@ def create_investment_growth_chart(initial_investment, monthly_contribution, yea
             dtick=5
         ),
         yaxis=dict(
-            title="Value ($)",
+            title="Value (Rs.)",
             gridcolor='rgba(0,0,0,0.1)'
         ),
         legend=dict(
@@ -235,7 +235,7 @@ def create_expense_trend_chart(expense_history):
             gridcolor='rgba(0,0,0,0.1)'
         ),
         yaxis=dict(
-            title="Amount ($)",
+            title="Amount (Rs.)",
             gridcolor='rgba(0,0,0,0.1)'
         ),
         plot_bgcolor='rgba(0,0,0,0)',
@@ -295,7 +295,7 @@ def create_savings_goal_progress_chart(goals, current_savings):
                 line=dict(color='rgba(0, 0, 0, 0.2)', width=1)
             ),
             showlegend=False,
-            hovertemplate=f"Target: ${target_amounts[i]:,.2f}<extra></extra>"
+            hovertemplate=f"Target: Rs.{target_amounts[i]:,.2f}<extra></extra>"
         ))
         
         # Add current amount (progress)
@@ -312,7 +312,7 @@ def create_savings_goal_progress_chart(goals, current_savings):
             textposition='inside',
             insidetextanchor='middle',
             showlegend=False,
-            hovertemplate=f"Current: ${current_amounts[i]:,.2f} ({percentages[i]:.1f}%)<extra></extra>"
+            hovertemplate=f"Current: Rs.{current_amounts[i]:,.2f} ({percentages[i]:.1f}%)<extra></extra>"
         ))
     
     # Update layout
@@ -320,7 +320,7 @@ def create_savings_goal_progress_chart(goals, current_savings):
         title="Savings Goals Progress",
         barmode='overlay',
         xaxis=dict(
-            title="Amount ($)",
+            title="Amount (Rs.)",
             gridcolor='rgba(0,0,0,0.1)'
         ),
         yaxis=dict(
